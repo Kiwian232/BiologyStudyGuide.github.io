@@ -16,7 +16,12 @@ button
 p
 {text-align: center; font-size: large;}
 body
-  {background-color:white;}
+  {background-color:white;
+	  color: black;}
+.dark-mode {
+  background-color: black;
+  color: white;
+}
   .tab {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -87,8 +92,8 @@ figcaption {
   evt.currentTarget.className += " active";
 }
 	function jef() {
-  document.getElementById('jeff').style.color = 'white';
-  document.getElementById('jeff').style.backgroundColor = 'black';
+  var element = document.body;
+   element.classList.toggle("dark-mode");
 }
 function bo() {
   document.getElementById('jeff').style.color = 'black';
@@ -1425,7 +1430,7 @@ Biodiversity: the total amount of variation on Earth</p>
 <p>Any questions? See any issues?</p>
 <p>Contact me: 954-305-7451 or duhduck673e@gmail.com</p>
 <p>
-          <button   name:"dark mode" onclick="jef()">Dark Mode</button>
-          <button   name:"loght mode" onclick="bo()">Light Mode</button></p>
+	<button   name:"dark mode" onclick="jef()">Toggle Dark Mode</button></p>
+      <!--    <button   name:"loght mode" onclick="bo()">Light Mode</button>  -->
   </body>
 </html>
