@@ -85,8 +85,16 @@ figcaption {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+	function jef() {
+  document.getElementById('jeff').style.color = 'white';
+  document.getElementById('jeff').style.backgroundColor = 'black';
+}
+function bo() {
+  document.getElementById('jeff').style.color = 'black';
+  document.getElementById('jeff').style.backgroundColor = 'white';
 }</script>
-  <body>
+  <body id="jeff">
 <h1>Biology Study Guide</h1>
 <p>All units covered in Biology are here.</p>
 	  <p>Worked on by: Katie, Stella, John, Julie, Emma, and Daniel (._.)</p>
@@ -1416,5 +1424,10 @@ Biodiversity: the total amount of variation on Earth</p>
 </div>
 <p>Any questions? See any issues?</p>
 <p>Contact me: 954-305-7451 or duhduck673e@gmail.com</p>
+<p><button   name:"click to enlarge text" onclick="document.getElementById('jeff').style.fontSize = 'xx-large'">Click to enlarge text</button>
+          <button   name:"click to enlarge text" onclick="document.getElementById('jeff').style.fontSize = 'medium'">Click to return text to normal size</button>
+          <button   name:"click to enlarge text" onclick="document.getElementById('jeff').style.fontSize = 'xx-small'">Click to shrink text</button>
+          <button   name:"click to enlarge text" onclick="jef()">Night Mode</button>
+          <button   name:"click to enlarge text" onclick="bo()">Day Mode</button></p>
   </body>
 </html>
