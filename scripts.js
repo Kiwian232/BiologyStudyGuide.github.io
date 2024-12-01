@@ -16,8 +16,12 @@ function openCity(evt, cityName) {
     //}
     //document.getElementById(cityName).style.display = "block";
     //evt.currentTarget.className += " active";
-
-    window.location.href = "content_pages/" + cityName;
+    
+    if (!window.location.pathname.startsWith("content_pages")) {
+        window.location.href = "/content_pages/" + cityName;
+    } else {
+        window.location.href = "/cityName";
+    }
 }
 
 function jef() {
@@ -31,10 +35,43 @@ function bo() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading the header:', error));
-  });
+    if (window.location.pathname.startsWith("content_pages")) {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                const pathname = window.location.pathname;
+
+                const pathWithoutSlash = pathname.substring(pathname.lastIndexOf('/') + 1);
+                const filenameWithoutExtension = pathWithoutSlash.replace(/\.html$/, '');
+                const formattedPath = filenameWithoutExtension.replace(/_/g, ' ');
+
+                const capitalizedPath = formattedPath.split(' ').map(word => {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }).join(' ');
+
+                document.getElementById('header-title').innerHTML = capitalizedPath;
+                console.log(capitalizedPath);
+            })
+        .catch(error => console.error('Error loading the header:', error));
+    } else {
+        fetch('../header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                const pathname = window.location.pathname;
+
+                const pathWithoutSlash = pathname.substring(pathname.lastIndexOf('/') + 1);
+                const filenameWithoutExtension = pathWithoutSlash.replace(/\.html$/, '');
+                const formattedPath = filenameWithoutExtension.replace(/_/g, ' ');
+
+                const capitalizedPath = formattedPath.split(' ').map(word => {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }).join(' ');
+
+                document.getElementById('header-title').innerHTML = capitalizedPath;
+                console.log(capitalizedPath);
+            })
+        .catch(error => console.error('Error loading the header:', error));
+    }
+});
